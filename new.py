@@ -1,9 +1,22 @@
-import pandas as pd
-names = list(map(str,input().split(",")))
-newname=[]
-for i in names:
-    newname.append(i)
-newname=newname.sort()
-df = pd.DataFrame()
-df["Names"]=newname
-df.to_csv("hi")
+graph = {
+  '5' : ['3','7'],
+  '3' : ['2', '4'],
+  '7' : ['8'],
+  '2' : [],
+  '4' : ['8'],
+  '8' : []
+}
+
+visited = set() # Set to keep track of visited nodes of graph.
+
+def dfs(visited, graph, node):  #function for dfs 
+    if node not in visited:
+        print (node)
+        visited.add(node)
+        for neighbour in graph[node]:
+            dfs(visited, graph, neighbour)
+    print("A")
+
+# Driver Code
+print("Following is the Depth-First Search")
+dfs(visited, graph, '5')
